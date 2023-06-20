@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\WordController;
 use Illuminate\Support\Facades\Route;
+use RealRashid\SweetAlert\Facades\Alert;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,4 @@ Route::post('/search', [WordController::class, 'search'])->name('word.search');
 Route::post('/save-search', [WordController::class, 'saveSearch'])->name('word.saveSearch');
 Route::get('/search-history', [WordController::class, 'searchHistory'])->name('word.searchHistory');
 Route::get('/search-history/detail/{id}', [WordController::class, 'detailHistory'])->name('word.detailHistory');
-Route::get('/search-history/delete/{id}', [WordController::class, 'deleteHistory'])->name('word.deleteHistory');
+Route::delete('/search-history/delete/{id}', [WordController::class, 'destroy'])->name('word.deleteHistory');

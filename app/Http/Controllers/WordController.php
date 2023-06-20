@@ -61,8 +61,9 @@ class WordController extends Controller
         $words = Word::when($favoriteOnly, function ($query) {
             return $query->where('favorite', true);
         })->latest()->get();
-
-
+        $title = 'Delete Data!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
 
         return view('search-history', compact('words', 'favoriteOnly'));
     }
@@ -73,9 +74,10 @@ class WordController extends Controller
         return view('detail', compact('word'));
     }
 
-    public function deleteHistory($id)
+    public function destroy($id)
     {
-        $word = Word::destroy($id);
-        return redirect()->route('word.searchHistory')->with('success', 'Kata Berhasil Dihapus');
+
+        Word::destroy($id);
+        return redirect()->route('word.searchHistory')->with('success', 'Data Berhasil Dihapus');
     }
 }
