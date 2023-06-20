@@ -16,7 +16,7 @@ class CreateWordsTable extends Migration
         Schema::create('words', function (Blueprint $table) {
             $table->id();
             $table->string('english_word');
-            $table->text('partOfSpeech');
+            $table->string('partOfSpeech', 125);
             $table->text('definition');
             $table->text('phonetics');
             $table->text('licenseName');
